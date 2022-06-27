@@ -1,0 +1,12 @@
+{
+  "name": "microformats-website-note",
+  "description": "A website written using Node to demonstrate Microformats2 usage",
+  "version": "1.0.0",
+  "engines": {
+    "node": "16.x",
+    "yarn": "1.x"
+  },
+  "scripts": {
+    "start": "node index.js"
+  }
+}
