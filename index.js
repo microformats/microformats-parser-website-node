@@ -17,7 +17,11 @@ app.get("/", async (req, res) => {
     res.render("index.html.ejs", { version: "1.0.1" });
   }
 });
-app.post("/", (req, res) => {});
+app.post("/", (req, res) => {
+  mf2.get({ baseUrl: req.body.url, html: req.body.html }, (err, data) => {
+    res.send(err || data);
+  });
+});
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
