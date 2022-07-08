@@ -1,6 +1,7 @@
 const express = require("express");
 const mf2 = require("microformat-node");
 const undici = require("undici");
+const pkg = require("./package.json");
 const app = express();
 const port = process.env.PORT || 9000;
 
@@ -14,10 +15,16 @@ app.get("/", async (req, res) => {
       res.send(err || data);
     });
   } else {
-    res.render("index.html.ejs", { version: "1.0.1" });
+    res.render("index.html.ejs", {
+      version: `${pkg.version} (lib: ${mf2.version})`,
+    });
   }
 });
-app.post("/", (req, res) => {});
+app.post("/", (req, res) => {
+  mf2.get({ baseUrl: req.body.url, html: req.body.html }, (err, data) => {
+    res.send(err || data);
+  });
+});
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
