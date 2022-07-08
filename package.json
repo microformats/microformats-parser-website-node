@@ -1,7 +1,7 @@
 {
   "name": "microformats-website-node",
   "description": "A website written using Node to demonstrate Microformats2 usage",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "engines": {
     "node": "17.x",
     "yarn": "1.x"
