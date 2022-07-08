@@ -2,7 +2,7 @@ const express = require("express");
 const mf2 = require("microformat-node");
 const undici = require("undici");
 const app = express();
-const port = 9000;
+const port = process.env.PORT || 9000;
 
 app.set("view engine", "ejs");
 app.use(express.static("public"));
