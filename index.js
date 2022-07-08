@@ -15,7 +15,9 @@ app.get("/", async (req, res) => {
       res.send(err || data);
     });
   } else {
-    res.render("index.html.ejs", { version: pkg.version });
+    res.render("index.html.ejs", {
+      version: `${pkg.version} (lib: ${mf2.version})`,
+    });
   }
 });
 app.post("/", (req, res) => {
