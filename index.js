@@ -14,7 +14,7 @@ app.get("/", async (req, res) => {
       res.send(err || data);
     });
   } else {
-    res.render("index.html.ejs", { version: "0.1.0" });
+    res.render("index.html.ejs", { version: "1.0.0" });
   }
 });
 app.post("/", (req, res) => {});
