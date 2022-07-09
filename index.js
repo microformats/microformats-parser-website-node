@@ -28,7 +28,6 @@ app.get("/", async (req, res) => {
       method: "GET",
     });
     const text = await body.text();
-    console.log(text);
     htmlToMf2(url, text, res);
   } else {
     res.render("index.html.ejs", {
