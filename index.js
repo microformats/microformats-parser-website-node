@@ -8,9 +8,10 @@ const port = process.env.PORT || 9000;
 
 function htmlToMf2(url, html, res) {
   mf2.get({ baseUrl: url, html }, (err, data) => {
+    const body = err || data;
     res
       .header("content-type", "application/json; charset=UTF-8")
-      .send(JSON.stringify(err || data, null, 2));
+      .send(JSON.stringify(body, null, 2));
   });
 }
 
@@ -19,8 +20,16 @@ app.use(express.static("public"));
 app.get("/", async (req, res) => {
   if (req.query.url) {
     const url = req.query.url;
-    const { body } = await undici.request(url);
-    htmlToMf2(url, body.text(), res);
+    const { body } = await undici.request(url, {
+      maxRedirections: 2,
+      headers: {
+        accept: "text/html, text/mf2+html",
+      },
+      method: "GET",
+    });
+    const text = await body.text();
+    console.log(text);
+    htmlToMf2(url, text, res);
   } else {
     res.render("index.html.ejs", {
       version: `${pkg.version} (lib: ${mf2.version})`,
