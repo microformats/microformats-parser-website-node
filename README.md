@@ -6,7 +6,7 @@ https://node.microformats.io
 
 ## Deployment
 
-All commits to the `main` branch get auto-deployed to the live website (running on [Heroku](https://node.microformats.io))
+All commits to the `main` branch get auto-deployed to the live website [running on Heroku](https://node.microformats.io).
 
 ## Getting Started
 
