@@ -1,5 +1,5 @@
 const express = require("express");
-const mf2 = require("microformat-node");
+const { mf2 } = require("microformats-parser");
 const undici = require("undici");
 const querystring = require("querystring");
 const pkg = require("./package.json");
@@ -7,12 +7,10 @@ const app = express();
 const port = process.env.PORT || 9000;
 
 function htmlToMf2(url, html, res) {
-  mf2.get({ baseUrl: url, html }, (err, data) => {
-    const body = err || data;
-    res
-      .header("content-type", "application/json; charset=UTF-8")
-      .send(JSON.stringify(body, null, 2));
-  });
+  const body = mf2(html, { baseUrl: url });
+  res
+    .header("content-type", "application/json; charset=UTF-8")
+    .send(JSON.stringify(body, null, 2));
 }
 
 app.set("view engine", "ejs");
