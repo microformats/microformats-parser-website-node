@@ -1,7 +1,6 @@
 const express = require("express");
 const { mf2 } = require("microformats-parser");
 const undici = require("undici");
-const bodyParser = require("body-parser");
 const pkg = require("./package.json");
 const app = express();
 const port = process.env.PORT || 9000;
@@ -44,7 +43,7 @@ app.get("/", async (req, res) => {
     });
   }
 });
-app.post("/", bodyParser.urlencoded({ extended: false }), (req, res) => {
+app.post("/", express.urlencoded({ extended: false }), (req, res) => {
   htmlToMf2(req.body.url, req.body.html, res);
 });
 
