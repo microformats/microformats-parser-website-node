@@ -6,21 +6,29 @@ const app = express();
 const port = process.env.PORT || 9000;
 
 function getDependencyVersion(dependencyName) {
-  const fs = require('fs');
-  const lockfile = require('@yarnpkg/lockfile');
+  const fs = require("fs");
+  const lockfile = require("@yarnpkg/lockfile");
   const parsed = lockfile.parse(fs.readFileSync("./yarn.lock", "utf-8"));
   if (parsed.type !== "success") return "unknown";
-  const dependency = parsed.object[`${dependencyName}@${pkg.dependencies[dependencyName]}`];
+  const dependency =
+    parsed.object[`${dependencyName}@${pkg.dependencies[dependencyName]}`];
   if (dependency === undefined) return "unknown";
   return dependency.version;
 }
 const mf2version = getDependencyVersion("microformats-parser");
 
 function htmlToMf2(url, html, res) {
-  const body = mf2(html, { baseUrl: url });
-  res
-    .header("content-type", "application/json; charset=UTF-8")
-    .send(JSON.stringify(body, null, 2));
+  try {
+    const body = mf2(html, { baseUrl: url });
+    res
+      .header("content-type", "application/json; charset=UTF-8")
+      .send(JSON.stringify(body, null, 2));
+  } catch (err) {
+    res
+      .header("content-type", "application/json; charset=UTF-8")
+      .status(500)
+      .send(JSON.stringify({ error: err.message }, null, 2));
+  }
 }
 
 app.set("view engine", "ejs");

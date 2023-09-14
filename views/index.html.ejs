@@ -53,9 +53,7 @@
 
   <body>
     <main id="mf2" class="container">
-      <h1 class="mt-5 mb-3">
-        Microformats Parser (Node) <%- version -%>
-      </h1>
+      <h1 class="mt-5 mb-3">Microformats Parser (Node) <%- version -%></h1>
 
       <form action="/" accept-charset="UTF-8" method="get">
         <div class="form-group">
@@ -92,20 +90,26 @@
             name="url"
             type="url"
             class="form-control form-control-lg"
+            required
           />
         </div>
 
         <button type="submit" class="btn btn-lg btn-success">Parse</button>
       </form>
 
-      <hr>
+      <hr />
 
       <p>
-        Drag this link to your bookmarks toolbar to parse a page with one click!<br>
+        Drag this link to your bookmarks toolbar to parse a page with one
+        click!<br />
       </p>
-      <a class="btn btn-primary btn-sm" href="javascript:(function(){document.location.href='https://node.microformats.io/?url='+encodeURIComponent(document.location.href);}())">mf2 parser</a>
-      
-      <hr>
+      <a
+        class="btn btn-primary btn-sm"
+        href="javascript:(function(){document.location.href='https://node.microformats.io/?url='+encodeURIComponent(document.location.href);}())"
+        >mf2 parser</a
+      >
+
+      <hr />
 
       <footer class="my-5">
         <ul>
