@@ -1,7 +1,6 @@
 const express = require("express");
 const { mf2 } = require("microformats-parser");
 const undici = require("undici");
-const querystring = require("querystring");
 const pkg = require("./package.json");
 const app = express();
 const port = process.env.PORT || 9000;
@@ -44,9 +43,8 @@ app.get("/", async (req, res) => {
     });
   }
 });
-app.post("/", (req, res) => {
-  const qsBody = querystring.parse(req.body);
-  htmlToMf2(qsBody.url, qsBody.html, res);
+app.post("/", express.urlencoded({ extended: false }), (req, res) => {
+  htmlToMf2(req.body.url, req.body.html, res);
 });
 
 app.listen(port, () => {
