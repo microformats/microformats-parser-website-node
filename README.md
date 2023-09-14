@@ -53,7 +53,7 @@ If you find bugs, have feature requests or questions, please
 
 ## License
 
-Microformats Parser Website Rust is dedicated to the public domain using Creative Commons -- CC0 1.0 Universal.
+Microformats Parser Website Node is dedicated to the public domain using Creative Commons -- CC0 1.0 Universal.
 
 http://creativecommons.org/publicdomain/zero/1.0
 
