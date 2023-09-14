@@ -9,7 +9,8 @@
   },
   "scripts": {
     "start": "node index.js",
-    "prepare": "husky install"
+    "prettier:list": "prettier '**/*.{js,ts,json,md,html}' --list-different",
+    "prettier:fix": "prettier '**/*.{js,ts,json,md,html}' --write"
   },
   "dependencies": {
     "@yarnpkg/lockfile": "^1.1.0",
@@ -18,8 +19,6 @@
     "microformats-parser": "^1.5.2"
   },
   "devDependencies": {
-    "husky": ">=6",
-    "lint-staged": ">=10",
     "prettier": "^3.0.3"
   },
   "lint-staged": {

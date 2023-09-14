@@ -13,10 +13,11 @@ All commits to the `main` branch get auto-deployed to the live website [running 
 The base branch is `next`. All PRs should target this branch.
 
 To initiate a release:
-* Create a new branch, from `next` named `release/x.y.z`
-* Bump the version in `package.json` to `x.y.z`
-* Merge `release/x.y.z` to `main`. This will trigger the [deployment](#deployment).
-* Merge `main` into `next`
+
+- Create a new branch, from `next` named `release/x.y.z`
+- Bump the version in `package.json` to `x.y.z`
+- Merge `release/x.y.z` to `main`. This will trigger the [deployment](#deployment).
+- Merge `main` into `next`
 
 ## Getting Started
 
@@ -35,7 +36,7 @@ Next, install the required dependencies and start the server:
 yarn install
 yarn start
 # Or, if you'd like a different port:
-# PORT=5000 yarn start 
+# PORT=5000 yarn start
 ```
 
 You can view your running local application at this URL:
