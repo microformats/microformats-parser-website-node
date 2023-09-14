@@ -8,6 +8,16 @@ https://node.microformats.io
 
 All commits to the `main` branch get auto-deployed to the live website [running on Heroku](https://node.microformats.io).
 
+### Git workflow
+
+The base branch is `next`. All PRs should target this branch.
+
+To initiate a release:
+* Create a new branch, from `next` named `release/x.y.z`
+* Bump the version in `package.json` to `x.y.z`
+* Merge `release/x.y.z` to `main`. This will trigger the [deployment](#deployment).
+* Merge `main` into `next`
+
 ## Getting Started
 
 This website is built using [Yarn](https://yarnpkg.com/).
@@ -23,15 +33,15 @@ Next, install the required dependencies and start the server:
 
 ```
 yarn install
-yarn run start
+yarn start
 # Or, if you'd like a different port:
-# PORT=5000 yarn run start 
+# PORT=5000 yarn start 
 ```
 
 You can view your running local application at this URL:
 
 ```
-http://localhost:9080
+http://localhost:9000
 ```
 
 ## Requirements
@@ -56,6 +66,3 @@ If you find bugs, have feature requests or questions, please
 Microformats Parser Website Node is dedicated to the public domain using Creative Commons -- CC0 1.0 Universal.
 
 http://creativecommons.org/publicdomain/zero/1.0
-
-## Contributors
-- [Jacky Alciné](https://github.com/jalcine) &mdash; https://jacky.wtf/about
